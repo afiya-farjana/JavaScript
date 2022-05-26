@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="//db.onlinewebfonts.com/c/9fc79094bf3b89a46fa879a457ff9185?family=VAGRounded+BT" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/14ce2ed133.js" crossorigin="anonymous"></script>
+
+  <title>ToDo List</title>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col s10 offset-s1 center-align">
+        <div class="card yellow lighten-5">
+          <div class="card-content">
+            <span class="card-title">
+              <h3>ToDo List</h3>
+            </span>
+            <div class="row">
+              <form id="taskForm">
+                <div class="input-field col s10 offset-s1">
+                  <label for="addTask" style="font-size: 20px;">Add New Task</label>
+                  <input type="text" id="addTask" name="addTask"
+                   placeholder=" New task">
+                   <div class="addIcon" >
+                    <i class="fa-solid fa-square-plus"></i>
+                   </div>
+                </div>
+                <!-- <div class="col s2">
+                   <input type="submit" value="Add Task" class="btn"> 
+                  <i class="fa-solid fa-circle-plus fa-2xl"></i>
+                </div> -->
+              </form>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="todoList">
+              <ul>
+                <li>
+                <label>
+                  <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
+                </label>
+                <a href="#" class="delete-item secondary-content">
+                  <i class="fa fa-remove"></i>
+                </a>
+                <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a> 
+              </li>
+                <li >
+                  <label>
+                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
+                  </label>
+                  <a href="#" class="delete-item secondary-content">
+                    <i class="fa fa-remove"></i>
+                  </a>
+                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
+                <li >
+                  <label>
+                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
+                  </label>
+                  <a href="#" class="delete-item secondary-content">
+                    <i class="fa fa-remove"></i>
+                  </a>
+                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
+                </li>
+                <li >
+                  <label>
+                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
+                  </label>
+                  <a href="#" class="delete-item secondary-content">
+                    <i class="fa fa-remove"></i>
+                  </a>
+                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
+                </li>
+                <li >
+                  <label>
+                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
+                  </label>
+                  <a href="#" class="delete-item secondary-content">
+                    <i class="fa fa-remove"></i>
+                  </a>
+                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
+                </li>
+              </ul>
+              <button class="btn waves-effect waves-light" type="submit" name="action">Clear All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
