@@ -30,7 +30,7 @@
                   <label for="addTask" style="font-size: 20px;">Add New Task</label>
                   <input type="text" id="addTask" name="addTask"
                    placeholder=" New task">
-                   <div class="addIcon" >
+                   <div class="addIcon" id="icon">
                     <i class="fa-solid fa-square-plus"></i>
                    </div>
                 </div>
@@ -43,53 +43,10 @@
           </div>
           <div class="card-content">
             <div class="todoList">
-              <ul>
-                <li>
-                <label>
-                  <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
-                </label>
-                <a href="#" class="delete-item secondary-content">
-                  <i class="fa fa-remove"></i>
-                </a>
-                <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a> 
-              </li>
-                <li >
-                  <label>
-                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
-                  </label>
-                  <a href="#" class="delete-item secondary-content">
-                    <i class="fa fa-remove"></i>
-                  </a>
-                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
-                <li >
-                  <label>
-                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
-                  </label>
-                  <a href="#" class="delete-item secondary-content">
-                    <i class="fa fa-remove"></i>
-                  </a>
-                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
-                </li>
-                <li >
-                  <label>
-                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
-                  </label>
-                  <a href="#" class="delete-item secondary-content">
-                    <i class="fa fa-remove"></i>
-                  </a>
-                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
-                </li>
-                <li >
-                  <label>
-                    <input type="checkbox" class="filled-in" checked="checked" /><span style="color: rgb(70, 69, 69);">List Item</span>
-                  </label>
-                  <a href="#" class="delete-item secondary-content">
-                    <i class="fa fa-remove"></i>
-                  </a>
-                  <a href="#" class="edit-list secondary-content"><i class="fa-solid fa-pen-to-square"></i></a>
-                </li>
+              <ul class="listCollection">
               </ul>
               <button class="btn waves-effect waves-light" type="submit" name="action">Clear All
+                <i class="fa-solid fa-trash-can right"></i>
               </button>
             </div>
           </div>
@@ -99,6 +56,8 @@
   </div>
 
   <!-- JavaScripts-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js Files\materialize.min.js"></script>
+  <script src="js Files\jquery-3.6.0.js"></script>
+  <script src="js Files\app.js"></script>
 </body>
 </html>
