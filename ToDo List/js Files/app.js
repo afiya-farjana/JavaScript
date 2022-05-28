@@ -3,47 +3,51 @@ const taskList = document.querySelector('.listCollection');
 const clearAll = document.querySelector('.btn');
 const taskInput = document.querySelector('#addTask');
 const addTask = document.querySelector('.addIcon');
+let listStatus = 'new';
 
 //load all event listeners
 loadEventListeners();
 
 function loadEventListeners(){
   addTask.addEventListener('click', addToList);
-  taskList.addEventListener('click',RemoveToDoList)
+  taskList.addEventListener('click',modifyList);
 }
 
 function addToList(e){
+  console.log(listStatus);
   if(taskInput.value === ''){
     alert('Please Add a Task First!');
     return;
   }
+
+  if(taskInput.value !== '' && listStatus === 'new'){
+    alert('Saved List Successfully');
+  }
   
+  if(listStatus === 'edit'){
+    addEditedList(e);
+    return;
+  }
   //Create li element
   const li = document.createElement('li');
   li.className = "list";
 
-  //Create label element
-  const chkBoxLabel = document.createElement('label');
+  //Create label element 
+  const checkBox = document.createElement('a');
+  checkBox.className = "check-item";
+  checkBox.innerHTML = '<i class="fa-regular fa-square fa-xl"></i>';
+  checkBox.style.paddingRight = '5px';
+  checkBox.style.color = '#26a69a';
+  li.appendChild(checkBox);
 
-  // chkboxx.innerHTML = `<input type="checkbox" class="filled-in" checked="checked"/>`;
-
-  const chkbox = document.createElement('input');
-  chkbox.type = 'checkbox';
-  chkbox.className = 'filled-in';
-  chkbox.checked = false;
-  chkbox.id = 'chkBox'
-  chkBoxLabel.htmlFor = 'chkBox';
-  
-
-  //Create text node and append it to label
+ // Create text node and append it to label
   const textNode = document.createElement('span');
   textNode.style.color = 'rgb(70, 69, 69)';
-
+  textNode.style.fontSize = '1.25em';
+  textNode.className = 'text';
   textNode.appendChild(document.createTextNode(taskInput.value));
-  chkBoxLabel.appendChild(chkbox);
-  chkBoxLabel.appendChild(textNode);
+  li.appendChild(textNode);
 
-  li.appendChild(chkBoxLabel);
 
   //Create Delete Link
   const deletelink = document.createElement('a');
@@ -53,7 +57,7 @@ function addToList(e){
 
   //Create Edit Link
   const editLink = document.createElement('a');
-  editLink.className = "delete-item secondary-content";
+  editLink.className = "edit-item secondary-content";
   editLink.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
   li.appendChild(editLink);
   
@@ -62,28 +66,75 @@ function addToList(e){
 
   //Clear Text Area
   taskInput.value = '';
-
-  const checked = document.querySelector('#chkBox');
-  checked.addEventListener('click',function(e){
-    if(e.checked = true){
-      checked.checked = false;
-    }else{
-      checked.checked = true;
-    }
-    console.log(checked.checked)
-  });
   
-
   e.preventDefault();
 }
 
-function RemoveToDoList(e){
-  if(e.target.parentElement.classList.contains('delete-item')){
-    if(confirm('Are you sure you want to delete?')){
-      e.target.parentElement.parentElement.remove();
-    }
+
+function modifyList(e){
+  let evt = e.target.parentElement;
+  
+  //Check List
+  if(evt.classList.contains('check-item')){
+    checkedItem(e);
   }
+
+  //edit list
+  if(evt.classList.contains('edit-item')){
+    console.log('edit ' +listStatus);
+    editList(e);
+  }
+
+  //delete list
+  if(evt.classList.contains('delete-item')){
+    removeList(e);
+  }
+  
   e.preventDefault();
 }
+
+function checkedItem(e){
+  let item = e.target;
+  if(item.classList.contains('fa-square')){
+    item.parentElement.innerHTML = '<i class="fa-regular fa-square-check fa-xl"></i>';
+ }
+
+ if(item.classList.contains('fa-square-check')){
+  item.parentElement.innerHTML = '<i class="fa-regular fa-square fa-xl"></i>';
+ }
+}
+
+function removeList(e){
+  if(confirm('Are you sure you want to delete?')){
+    e.target.parentElement.parentElement.remove();
+  }
+}
+
+function editList(e){
+  let editItem = e.target.parentElement;
+  listStatus = 'edit';
+  console.log(editItem);
+  let txt = document.querySelector('.text');
+  let val = txt.innerHTML;
+  taskInput.value = val;
+  console.log(e.target.parentElement.parentElement.classList);
+  txt.innerHTML = '';
+}
+
+function addEditedList(e){
+  if(taskInput.value === ''){
+    alert('Please Add a Task First!');
+    return;
+  }
+  if(taskInput.value !== '' && listStatus === 'edit'){
+    let txt = document.querySelector('.text');
+   txt.innerHTML = taskInput.value;
+   taskInput.value = '';
+    alert('Saved Edited List Successfully!');
+    listStatus = 'new';
+  }
+}
+
+
 
 
