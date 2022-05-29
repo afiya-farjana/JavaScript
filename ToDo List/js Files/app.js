@@ -1,9 +1,12 @@
 const form = document.querySelector('#taskForm');
 const taskList = document.querySelector('.listCollection');
-const clearAll = document.querySelector('.btn');
+const clearAll = document.querySelector('#clrBtn');
 const taskInput = document.querySelector('#addTask');
 const addTask = document.querySelector('.addIcon');
+const label = document.querySelector('#taskLabel');
 let listStatus = 'new';
+taskInput.value = '';
+console.log(clearAll);
 
 //load all event listeners
 loadEventListeners();
@@ -11,18 +14,18 @@ loadEventListeners();
 function loadEventListeners(){
   addTask.addEventListener('click', addToList);
   taskList.addEventListener('click',modifyList);
+  clearAll.addEventListener('click', clearAllList);
 }
 
 function addToList(e){
-  console.log(listStatus);
   if(taskInput.value === ''){
     alert('Please Add a Task First!');
     return;
   }
 
-  if(taskInput.value !== '' && listStatus === 'new'){
-    alert('Saved List Successfully');
-  }
+  // if(taskInput.value !== '' && listStatus === 'new'){
+  //   alert('Saved List Successfully');
+  // }
   
   if(listStatus === 'edit'){
     addEditedList(e);
@@ -70,9 +73,9 @@ function addToList(e){
   e.preventDefault();
 }
 
-
 function modifyList(e){
   let evt = e.target.parentElement;
+  //console.log(evt);
   
   //Check List
   if(evt.classList.contains('check-item')){
@@ -81,7 +84,6 @@ function modifyList(e){
 
   //edit list
   if(evt.classList.contains('edit-item')){
-    console.log('edit ' +listStatus);
     editList(e);
   }
 
@@ -112,26 +114,41 @@ function removeList(e){
 
 function editList(e){
   let editItem = e.target.parentElement;
+  let txt = editItem.parentElement.children[1];
+  let val = txt.innerText;
+
+  label.innerHTML = 'Edit List';
   listStatus = 'edit';
-  console.log(editItem);
-  let txt = document.querySelector('.text');
-  let val = txt.innerHTML;
+  editItem.style.color = 'rgb(255, 72, 0)';
   taskInput.value = val;
-  console.log(e.target.parentElement.parentElement.classList);
-  txt.innerHTML = '';
+  addTask.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+
+  taskInput.addEventListener('input', function(evt){
+    txt.innerText = evt.target.value;
+  });
 }
 
 function addEditedList(e){
+  let saveEdit =  document.querySelector('.edit-item');
+ // console.log(evt);
   if(taskInput.value === ''){
     alert('Please Add a Task First!');
     return;
   }
   if(taskInput.value !== '' && listStatus === 'edit'){
-    let txt = document.querySelector('.text');
-   txt.innerHTML = taskInput.value;
    taskInput.value = '';
-    alert('Saved Edited List Successfully!');
+    alert('Saved Successfully!');
+    addTask.innerHTML = '<i class="fa-solid fa-square-plus"></i>';
+    label.innerHTML = 'Add New Task';
+    saveEdit.style.color = '#26a69a';
     listStatus = 'new';
+  }
+}
+
+function clearAllList(e){
+  console.log(taskList.firstChild);
+  while(taskList.firstChild){
+    taskList.removeChild(taskList.firstChild);
   }
 }
 

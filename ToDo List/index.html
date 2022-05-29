@@ -27,7 +27,7 @@
             <div class="row">
               <form id="taskForm">
                 <div class="col s9 offset-s1 input-field">
-                  <label for="addTask" style="font-size: 20px;">Add New Task</label>
+                  <label for="addTask" id="taskLabel" style="font-size: 20px;">Add New Task</label>
                   <input type="text" id="addTask" name="addTask"
                    placeholder=" New task">
                 </div>
@@ -42,7 +42,7 @@
             <div class="todoList">
               <ul class="listCollection">
               </ul>
-              <button class="btn waves-effect waves-light" type="submit" name="action">Clear All
+              <button class="btn waves-effect waves-light" type="button" id="clrBtn">Clear All
                 <i class="fa-solid fa-trash-can right"></i>
               </button>
             </div>
