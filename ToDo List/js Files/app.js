@@ -1,4 +1,3 @@
-const form = document.querySelector('#taskForm');
 const taskList = document.querySelector('.listCollection');
 const clearAll = document.querySelector('#clrBtn');
 const taskInput = document.querySelector('#addTask');
@@ -8,7 +7,6 @@ const label = document.querySelector('#taskLabel');
 let listStatus = 'new';
 let checkStatus = 'unchecked';
 let txtLabel;
-let checkBox;
 taskInput.value = '';
 
 //load all event listeners
@@ -24,28 +22,11 @@ function loadEventListeners(){
 function getLists(){
   let lists = getListItems('lists');
   let checkBox = getListItems('checkStatus');
-  let indexVal ;
-  console.log(lists);
-  console.log(checkBox);
- // console.log(checkBox);
-
-//  checkBox.forEach(function(chk){
-//   //let chck = document.querySelector('.check-item');
-//   console.log(chck);
-//   if(chk === 'checked'){
-//     checkStatus = 'checked';
-//   }else{
-//     checkStatus = 'unchecked';
-//   }
-// });
 
   lists.forEach(function(task, index){
     const loadChkStatus = checkBox[index];
-    console.log(loadChkStatus);
     createListElements(task, loadChkStatus);
   });
-
-  
 }
 
 function addToList(e){
@@ -63,7 +44,6 @@ function addToList(e){
 
   //store list to local storage
   storeListInLocalStorage(taskInput.value, 'lists');
-  
   storeListInLocalStorage(checkStatus, 'checkStatus');
   
 
@@ -78,7 +58,7 @@ function createListElements(inputValue, newChkStatus){
    const li = document.createElement('li');
    li.className = "list";
  
-   //Create label element 
+   //Create checkbox element 
    const checkBox = document.createElement('a');
    checkBox.className = "check-item";
    if(newChkStatus === 'checked'){
@@ -86,19 +66,17 @@ function createListElements(inputValue, newChkStatus){
    }else{
     checkBox.innerHTML = '<i class="fa-regular fa-square fa-xl"></i>';
    }
-   
    checkBox.style.paddingRight = '5px';
    checkBox.style.color = '#26a69a';
    li.appendChild(checkBox);
  
-  // Create text node and append it to label
+  // Create text node 
    const textNode = document.createElement('span');
    textNode.style.color = 'rgb(70, 69, 69)';
    textNode.style.fontSize = '1.25em';
    textNode.className = 'text';
    textNode.appendChild(document.createTextNode(inputValue));
    li.appendChild(textNode);
- 
  
    //Create Delete Link
    const deletelink = document.createElement('a');
@@ -134,7 +112,6 @@ function modifyList(e){
 
   //edit list
   if(evt.classList.contains('edit-item')){
-    console.log(listStatus);
     if(listStatus === 'new'){
       editList(e); 
     }else{
@@ -168,12 +145,10 @@ function checkedItem(e){
   item.parentElement.innerHTML = '<i class="fa-regular fa-square fa-xl"></i>';
   checkStatus = 'unchecked';
   lists[index] = checkStatus;
- localStorage.setItem('checkStatus', JSON.stringify(lists));
+  localStorage.setItem('checkStatus', JSON.stringify(lists));
  }
- 
- 
- console.log(lists);
 
+ e.preventDefault();
 }
 
 function editList(e){
@@ -181,17 +156,11 @@ function editList(e){
   let txt = editItem.parentElement.children[1];
   let val = txt.innerText;
   txtLabel = editItem;
-  let listItems = editItem.parentElement.parentElement.children;
-  let index = Array.from(listItems).indexOf(editItem.parentElement);
-  console.log(listItems[index]);
- // listItems = Array.from(listItems);
- // console.log(listItems);
   label.innerHTML = 'Edit List';
   listStatus = 'edit';
   editItem.style.color = 'rgb(255, 72, 0)';
   taskInput.value = val;
   addTask.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-  
 }
 
 function addEditedList(e){
@@ -200,7 +169,7 @@ function addEditedList(e){
   let listItems = saveEdit.parentElement.parentElement.children;
   let index = Array.from(listItems).indexOf(saveEdit.parentElement);
   let lists = getListItems('lists');
-  //console.log(saveEdit);
+  
   if(taskInput.value === ''){
     alert('Please Add a Task First!');
     return;
@@ -216,6 +185,8 @@ function addEditedList(e){
     saveEdit.style.color = 'rgb(38,166,154)';
     listStatus = 'new';
   }
+
+  e.preventDefault();
 }
 
 function removeList(e){
@@ -260,7 +231,6 @@ function getListItems(keyName){
   }else {
     lists = JSON.parse(localStorage.getItem(keyName));
   }
-  console.log(lists);
 
   return lists;
 }
