@@ -8,15 +8,24 @@ let listStatus = 'new';
 let checkStatus = 'unchecked';
 let txtLabel;
 taskInput.value = '';
-
+console.log(addTask);
 //load all event listeners
 loadEventListeners();
 
 function loadEventListeners(){
   document.addEventListener('DOMContentLoaded', getLists);
+  taskInput.addEventListener('keypress', EnterKeyEvent);
   addTask.addEventListener('click', addToList);
   taskList.addEventListener('click',modifyList);
   clearAll.addEventListener('click', clearAllList);
+}
+
+
+function EnterKeyEvent(e){
+  if(e.key === 'Enter'){
+    e.preventDefault();
+    addTask.click();
+  }
 }
 
 function getLists(){
@@ -234,7 +243,4 @@ function getListItems(keyName){
 
   return lists;
 }
-
-
-
 
