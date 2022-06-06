@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+    />
+    <link rel="stylesheet" href="Bootstrap\bootstrap.min.css" />
+    <title>Student List</title>
+    <style>
+      h1 {
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 45px;
+      }
+
+      p {
+        display: none;
+        font-size: 13px;
+        color: red;
+        margin-top: 2px;
+      }
+
+      .form-label {
+        font-size: 15px;
+      }
+
+      .table {
+        font-size: 15px;
+      }
+
+      .form-control {
+        font-size: 15px;
+      }
+
+      .success,
+      .error {
+        color: white;
+        padding: 10px;
+        margin: 5px 0 15px 0;
+        font-size: 15px;
+      }
+
+      .success {
+        background: green;
+      }
+
+      .error {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2" id="main">
+          <h1>Add Student</h1>
+          <form id="student-form">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control student"
+                placeholder="Student Name"
+              />
+              <p id="pName"></p>
+            </div>
+            <div class="mb-3">
+              <label for="class" class="form-label">Class</label>
+              <input
+                type="text"
+                id="class"
+                class="form-control class"
+                placeholder="Class"
+              />
+              <p id="pClass"></p>
+            </div>
+            <div class="mb-3">
+              <label for="section" class="form-label">Section</label>
+              <input
+                type="text"
+                id="section"
+                class="form-control section"
+                placeholder="Section"
+              />
+              <p id="pSection"></p>
+            </div>
+            <div class="mb-3">
+              <label for="roll" class="form-label">Roll No.</label>
+              <input
+                type="text"
+                id="roll"
+                class="form-control roll"
+                placeholder="Roll No."
+              />
+              <p id="pRoll"></p>
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary btn-lg mb-6">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <table class="table table-warning table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Roll</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="student-list"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="Bootstrap\bootstrap.bundle.min.js"></script>
+  </body>
+</html>
