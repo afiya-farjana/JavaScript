@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Bootstrap\bootstrap.min.css" />
+    <title>Weather Today</title>
+  </head>
+  <body>
+    <div class="row align-items-center min-vh-100 main">
+      <div class="col-7 mx-auto">
+        <div class="card shadow border">
+          <h3 class="card-header">Weather Today</h3>
+          <div class="card-body align-items-start">
+            <div class="row">
+              <div class="col-md-10">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Search City"
+                  aria-label="Search"
+                  id="search"
+                />
+                <p class="alert-text">Please enter a valid city</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <p class="location">
+                <i class="fa fa-map-marker p-2" aria-hidden="true"></i>Location
+              </p>
+              <span class="time">Time</span>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <div class="card h-100 text-center">
+                  <div class="card-body">
+                    <img
+                      id="w-icon"
+                      src="img\sunny.svg"
+                      alt="Weather icon"
+                      style="width: 100px"
+                    />
+                    <div class="temperature">0<sup>°C</sup></div>
+                    <span class="weather-type">None</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <div class="card h-100 text-center">
+                  <div class="card-body">
+                    <!-- <img
+                      src="img\sunny.svg"
+                      alt="Weather icon"
+                      style="width: 100px"
+                    /> -->
+                    <span class="feelsLike">Feels like 0<sup>°C</sup></span
+                    ><br />
+                    <span class="humidity">Humidity 0%</span><br />
+                    <span class="wind">Wind 0 km/h</span><br />
+                    <span class="pressure">Pressure 0 mb</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="weather.js"></script>
+    <script src="Bootstrap\bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/14ce2ed133.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
